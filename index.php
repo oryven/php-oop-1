@@ -42,14 +42,14 @@
         public $sottotitolo;
         public $regista;
 
-        public function __construct($titolo) {
+        public function __construct($title) {
            
-            $this -> titolo = $titolo;
+            $this -> titolo = $title;
     
         }
 
         public function getFullTitle() {
-            if($sottotitolo){
+            if($this->sottotitolo){
                 return $this -> titolo . " :" . $this -> sottotitolo;
             }else{
                 return  $this -> titolo;
@@ -57,7 +57,7 @@
         }  
         
         public function __toString(){
-            if($regista){
+            if($this -> regista){
                 return $this -> getFullTitle() . " :" . $this -> regista;
             }else{
                 return  $this -> getFullTitle() . " | ??";
@@ -67,8 +67,14 @@
     }
 
     $film1 = new Film("Matrix");
-    $film2 = new Film("fantozzi 2", );
-    $film3 = new Film("peter pan", "il ritorno all'isola che non c'è", "robin budd");
+    $film2 = new Film("fantozzi 2");
+    $film3 = new Film("peter pan");
 
     $film2 -> sottotitolo = "il ritorno di fantozzi";
+    $film3 -> sottotitolo = "il ritorno all'isola che non c'è";
+    $film3 -> regista = "robin budd";
+
+    echo "film 1 " . $film1 ->getFullTitle() . "<br>";
+    echo "film 2 " . $film2 ->getFullTitle() . "<br>";
+    echo $film3;
 ?>
